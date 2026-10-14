@@ -18,7 +18,6 @@ class _CourseScreenState extends State<CourseScreen> {
   Widget build(BuildContext context) {
     // TODO(Part 1-5): replace this placeholder with the screen from the sketch.
 
-    //  - Part 3: description inside a Card
     //  - Part 4: 'Interested: N' + "I'm interested" button + favorite IconButton
 
     return Scaffold(
@@ -64,6 +63,23 @@ class _CourseScreenState extends State<CourseScreen> {
                 _ScheduleItem(icon: Icons.groups, text: 'Fri 15:00'),
               ],
             ),
+
+            const SizedBox(
+              height: 20,
+            ),
+            //  - Part 3: description inside a Card
+            const Card(
+              child: Padding(
+                  padding: EdgeInsetsGeometry.all(16),
+                  child: Text(
+                      'Build AI-powered mobile apps with Flutter: from widgets to machine learning and LLMs')),
+            ),
+
+
+
+
+
+
           ],
         ),
       ),
