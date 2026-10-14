@@ -17,14 +17,14 @@ class _CourseScreenState extends State<CourseScreen> {
   @override
   Widget build(BuildContext context) {
     // TODO(Part 1-5): replace this placeholder with the screen from the sketch.
-    //  - Part 2: schedule row with three equal items (Expanded)
+
     //  - Part 3: description inside a Card
     //  - Part 4: 'Interested: N' + "I'm interested" button + favorite IconButton
 
-
     return Scaffold(
       appBar: AppBar(title: const Text('COMP 205')),
-      body: SingleChildScrollView( //  - Part 5: no overflow on a small phone
+      body: SingleChildScrollView(
+        //  - Part 5: no overflow on a small phone
         //  - Part 1: AppBar 'COMP 205'
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -33,12 +33,13 @@ class _CourseScreenState extends State<CourseScreen> {
             Row(
               children: [
                 const CircleAvatar(
-                  child: Icon(Icons.school),  // child 1
+                  child: Icon(Icons.school), // child 1
                 ),
 
-                const SizedBox(width: 16),    //child 2
+                const SizedBox(width: 16), //child 2
 
-                Expanded(                     //child 3
+                Expanded(
+                  //child 3
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -52,6 +53,17 @@ class _CourseScreenState extends State<CourseScreen> {
                 ),
               ],
             ),
+
+            const SizedBox(height: 32),
+
+            // Part 2: schedule row with three equal items (Expanded)
+            Row(
+              children: [
+                _ScheduleItem(icon: Icons.schedule, text: 'Mon 10:00'),
+                _ScheduleItem(icon: Icons.computer, text: 'Wed 10:00'),
+                _ScheduleItem(icon: Icons.groups, text: 'Fri 15:00'),
+              ],
+            ),
           ],
         ),
       ),
@@ -59,3 +71,21 @@ class _CourseScreenState extends State<CourseScreen> {
   }
 }
 
+class _ScheduleItem extends StatelessWidget {
+  final IconData icon;
+  final String text;
+
+  const _ScheduleItem({required this.icon, required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Column(
+        children: [
+          Icon(icon),
+          Text(text),
+        ],
+      ),
+    );
+  }
+}
