@@ -16,31 +16,46 @@ class _CourseScreenState extends State<CourseScreen> {
 
   @override
   Widget build(BuildContext context) {
-    
     // TODO(Part 1-5): replace this placeholder with the screen from the sketch.
-    //  - Part 1: AppBar 'COMP 205' + header row (CircleAvatar + course name/term)
-    final theme = Theme.of(context);
-    final width = MediaQuery.sizeOf(context).width;
-
     //  - Part 2: schedule row with three equal items (Expanded)
     //  - Part 3: description inside a Card
     //  - Part 4: 'Interested: N' + "I'm interested" button + favorite IconButton
-    //  - Part 5: no overflow on a small phone
-    /* const Row(children: [
-  Icon(Icons.info),
-  Text('A very long message that does not fit on one line'),
-])
 
-// Fix: let the text take the remaining space and wrap
-const Row(children: [
-  Icon(Icons.info),
-  Expanded(
-    child: Text('A very long message that does not fit on one line'),
-  ),
-])*/
+
     return Scaffold(
-      appBar: AppBar(title: const Text('TODO')),
-      body: const Center(child: Text('Build the screen from the sketch')),
+      appBar: AppBar(title: const Text('COMP 205')),
+      body: SingleChildScrollView( //  - Part 5: no overflow on a small phone
+        //  - Part 1: AppBar 'COMP 205'
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            // header row (CircleAvatar + course name/term)
+            Row(
+              children: [
+                const CircleAvatar(
+                  child: Icon(Icons.school),  // child 1
+                ),
+
+                const SizedBox(width: 16),    //child 2
+
+                Expanded(                     //child 3
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Mobile Programming',
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                      const Text('Fall 2026 · B238'),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
+
