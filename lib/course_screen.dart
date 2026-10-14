@@ -13,17 +13,34 @@ class CourseScreen extends StatefulWidget {
 
 class _CourseScreenState extends State<CourseScreen> {
   // TODO(Part 4): add the state you need (a counter and a favorite flag).
+  int _counter = 0;
+  bool _isFavorite = false;
 
   @override
   Widget build(BuildContext context) {
     // TODO(Part 1-5): replace this placeholder with the screen from the sketch.
 
     //  - Part 4: 'Interested: N' + "I'm interested" button + favorite IconButton
-
     return Scaffold(
-      appBar: AppBar(title: const Text('COMP 205')),
+      appBar: AppBar(
+        title: const Text('COMP 205'),
+        actions: [
+          // Part 4: Favorite IconButton in AppBar
+          IconButton(
+            icon: Icon(
+              _isFavorite ? Icons.favorite : Icons.favorite_border,
+            ),
+            onPressed: () {
+              setState(() {
+                _isFavorite = !_isFavorite;
+              });
+            },
+          ),
+        ],
+      ),
+
+//  - Part 5: no overflow on a small phone
       body: SingleChildScrollView(
-        //  - Part 5: no overflow on a small phone
         //  - Part 1: AppBar 'COMP 205'
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -75,11 +92,19 @@ class _CourseScreenState extends State<CourseScreen> {
                       'Build AI-powered mobile apps with Flutter: from widgets to machine learning and LLMs')),
             ),
 
+            const SizedBox(height: 32),
 
-
-
-
-
+            // part 4: Interested UI
+            Text('Interested: $_counter'),
+            const SizedBox(height: 8),
+            ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    _counter++;
+                  });
+                },
+                child: const Text("I'm interested"),
+            ),
           ],
         ),
       ),
